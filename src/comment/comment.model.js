@@ -1,18 +1,19 @@
 import mongoose from 'mongoose';
 
 const CommentSchema = mongoose.Schema({
-    idUser: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
-    },
+
     commentText: {
         type: String,
         required: [true, 'The title is required']
     },
+    idPublication: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Publication'
+    },
     estado: {
         type: Boolean,
         default: true
-    }
+    },
 });
 
 CommentSchema.methods.toJSON = function(){

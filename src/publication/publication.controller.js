@@ -41,7 +41,7 @@ export const publicationPut = async (req, res) => {
         return res.status(404).json({ msg: "Publication not found, plis try with other publication" });
     }
 
-    const publicationUpdate = await Publication.findOne({ _id: id });
+    const publicationUpdate = await Publication.findByIdAndUpdate(id, resto, { new: true });
 
     res.status(200).json({
         msg: 'This publication was EDITED',
