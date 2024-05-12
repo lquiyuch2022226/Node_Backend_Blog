@@ -12,9 +12,9 @@ import {
 const router = Router();
 
 router.post(
-    '/:publi',
+    '/:idPublication',
     [
-        check('publi', 'This is not a valid id').isMongoId(),
+        check('idPublication', 'This is not a valid id').isMongoId(),
         check("commentText", "The comment is required").not().isEmpty(),
         validarCampos
     ], commentPost);
@@ -24,16 +24,16 @@ router.get(
 );
 
 router.put(
-    '/:id',
+    '/:idPublication',
     [
-        check('id', 'This is not a valid id').isMongoId(),
+        check('idPublication', 'This is not a valid id').isMongoId(),
         validarCampos
     ], commentPut);
 
 router.delete(
-    '/:id',
+    '/:idPublication',
     [
-        check('id', 'This is not a valid id').isMongoId(),
+        check('idPublication', 'This is not a valid id').isMongoId(),
         validarCampos
     ], commentDelete);
 

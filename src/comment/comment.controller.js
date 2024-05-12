@@ -60,9 +60,9 @@ export const commentPut = async (req, res) => {
 }
 
 export const commentDelete = async (req, res) => {
-    const { id } = req.params;
+    const { idPublication } = req.params;
 
-    const commentDeleted = await Comment.findByIdAndUpdate(id, { estado: false });
+    const commentDeleted = await Comment.findByIdAndUpdate(idPublication, { estado: false });
 
         res.status(200).json({
             msg: 'This comment was DELETED',
