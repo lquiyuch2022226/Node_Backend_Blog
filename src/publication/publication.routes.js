@@ -7,7 +7,9 @@ import {
     publicationPost,
     publicationsGet,
     publicationPut,
-    publicationDelete } from './publication.controller.js';
+    publicationDelete,
+    publicationById
+} from './publication.controller.js';
 
 const router = Router();
 
@@ -15,12 +17,21 @@ router.post(
     '/',
     [
         check("title", "The title is required").not().isEmpty(),
+        check("descript", "The description of the post is required").not().isEmpty(),
         check("text", "The text of the post text is required").not().isEmpty(),
         check("imagen", "The image is required").not().isEmpty(),
         validarCampos
     ], publicationPost);
 
 router.get('/', publicationsGet);
+
+router.get(
+    '/:id',
+    [
+        check('id', 'This is not a valid id').isMongoId(),
+        validarCampos
+    ],
+    publicationById);
 
 router.put(
     "/:id",

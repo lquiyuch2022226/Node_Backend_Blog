@@ -1,9 +1,9 @@
 import Publication from './publication.model.js';
 
 export const publicationPost = async (req, res) => {
-    const { title, text, imagen } = req.body;
+    const { title, text, descript, imagen } = req.body;
 
-    const publication = new Publication({ title, text, imagen });
+    const publication = new Publication({ title, text, descript , imagen });
 
     await publication.save();
 
@@ -26,6 +26,21 @@ export const publicationsGet = async (req, res) => {
     res.status(200).json({
         total,
         publications
+    });
+}
+
+export const publicationById = async (req, res) => {
+    const { id } = req.params;
+    const publication = await Publication.findOne({ _id: id });
+
+    if (!publication.estado) {
+        res.status(400).json({
+            msg: 'This publication was deleted :('
+        });
+    }
+
+    res.status(200).json({
+        publication
     });
 }
 

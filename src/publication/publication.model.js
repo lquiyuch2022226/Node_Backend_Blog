@@ -5,12 +5,16 @@ const PublicationSchema = mongoose.Schema({
         type: String,
         required: [true, 'The title is required']
     },
+    descript: {
+        type: String,
+        required: [true, 'The descript is required']
+    },
     text: {
         type: String,
         required: [true, 'The text is required']
     },
     imagen: {
-        type: 'String'
+        type: String
     },
     estado: {
         type: Boolean,
