@@ -14,7 +14,7 @@ export const commentPost = async (req, res) =>{
     }
 
     if (!publication.estado) {
-        return res.status(400).json({ 
+        return res.status(500).json({ 
             msg: 'Cannot add comment because the publication was deleted' 
         });
     }
@@ -31,7 +31,8 @@ export const commentPost = async (req, res) =>{
 
 export const commentsGet = async (req, res) => {
     const {limite, desde} = req.query;
-    const query = {estado: true};
+    const { publiId } = req.params;
+    const query = {estado: true, idPublication: publiId};
 
     const [total, comments] = await Promise.all([
         Comment.countDocuments(query),

@@ -12,7 +12,7 @@ import {
 const router = Router();
 
 router.post(
-    '/:idPublication',
+    '/create/:idPublication',
     [
         check('idPublication', 'This is not a valid id').isMongoId(),
         check("commentText", "The comment is required").not().isEmpty(),
@@ -20,8 +20,11 @@ router.post(
     ], commentPost);
 
 router.get(
-    '/', commentsGet
-);
+    '/:publiId',
+    [
+        check('publiId', 'This is not a valid id').isMongoId(),
+        validarCampos
+    ], commentsGet);
 
 router.put(
     '/:idPublication',
