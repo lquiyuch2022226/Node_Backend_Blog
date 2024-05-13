@@ -26,7 +26,7 @@ router.post(
 router.get('/', publicationsGet);
 
 router.get(
-    '/:id',
+    '/one/:id',
     [
         check('id', 'This is not a valid id').isMongoId(),
         validarCampos

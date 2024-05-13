@@ -23,8 +23,7 @@ const PublicationSchema = mongoose.Schema({
 });
 
 PublicationSchema.methods.toJSON = function(){
-    const {__v, _id, ...publication} = this.toObject();
-    publication.publication_id = _id;
+    const {__v, ...publication} = this.toObject();
     return publication;
 }
 
