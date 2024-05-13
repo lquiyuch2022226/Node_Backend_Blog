@@ -1,7 +1,10 @@
 import mongoose from 'mongoose';
 
 const CommentSchema = mongoose.Schema({
-
+    autorName:{
+        type: String,
+        required: [true, 'The autor is required']
+    },
     commentText: {
         type: String,
         required: [true, 'The title is required']

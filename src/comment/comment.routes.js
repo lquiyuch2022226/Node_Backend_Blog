@@ -15,6 +15,7 @@ router.post(
     '/create/:idPublication',
     [
         check('idPublication', 'This is not a valid id').isMongoId(),
+        check("autorName", "The autor is required").not().isEmpty(),
         check("commentText", "The comment is required").not().isEmpty(),
         validarCampos
     ], commentPost);
