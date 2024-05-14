@@ -3,7 +3,7 @@ import Comment from '../comment/comment.model.js'
 
 export const commentPost = async (req, res) =>{
     const { idPublication } = req.params;
-    const {autorName, commentText} = req.body;
+    const {autorName, date, commentText} = req.body;
 
     const publication = await Publication.findById(idPublication);
 
@@ -19,7 +19,7 @@ export const commentPost = async (req, res) =>{
         });
     }
     
-    const comment = new Comment({autorName, commentText, idPublication});
+    const comment = new Comment({autorName, date, commentText, idPublication});
 
     await comment.save();
 

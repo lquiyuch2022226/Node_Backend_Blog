@@ -16,6 +16,7 @@ router.post(
     [
         check('idPublication', 'This is not a valid id').isMongoId(),
         check("autorName", "The autor is required").not().isEmpty(),
+        check("date", "The date is required").not().isEmpty(),
         check("commentText", "The comment is required").not().isEmpty(),
         validarCampos
     ], commentPost);

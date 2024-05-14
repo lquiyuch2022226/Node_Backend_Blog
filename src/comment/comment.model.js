@@ -5,6 +5,10 @@ const CommentSchema = mongoose.Schema({
         type: String,
         required: [true, 'The autor is required']
     },
+    date:{
+        type: Date,
+        required: [true, 'The date is required']
+    },
     commentText: {
         type: String,
         required: [true, 'The title is required']
